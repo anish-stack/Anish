@@ -1,26 +1,16 @@
 const express = require('express');
 const app = express();
 
-// Route for the root URL "/"
-app.get('/', (req, res) => {
-  res.send('Hello, Vercel!');
-});
+// Require the contact route
+const contactRoute = require('./contact');
 
-// Route for "/about"
-app.get('/about', (req, res) => {
-  res.send('This is the about page.');
-});
+// Use the contact route
+app.use(contactRoute);
 
-// Route for "/contact"
-app.get('/contact', (req, res) => {
-  res.send('This is the contact page.');
-});
-
-// Route for "/api/data"
-app.get('/api/data', (req, res) => {
-  // You can send JSON data as a response
-  res.json({ message: 'This is some JSON data from the API.' });
-});
+app.get('/',(req,res)=>{
+    res.send("hello word")
+})
+// Other routes and middleware...
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
